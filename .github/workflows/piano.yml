@@ -57,4 +57,4 @@ jobs:
         with:
           folder: .
           branch: main
-          commit-message: "🎹 Practice Log: +${{ github.event.inputs.amount }} ${{ github.event.inputs.unit }}"
+          commit-message: "🎹 Practice Log += ${{ github.event.inputs.amount }} ${{ github.event.inputs.unit }}"
