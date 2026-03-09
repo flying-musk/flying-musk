@@ -49,8 +49,16 @@ func main() {
 	fmt.Printf("🎹 Success: +%.2f hrs | New Total: %.2f hrs\n", hours, data.PianoHours)
 
 	// 4. Save to data.json
-	updatedJSON, _ := json.MarshalIndent(data, "", "  ")
-	os.WriteFile("data.json", updatedJSON, 0644)
+	updatedJSON, err := json.MarshalIndent(data, "", "  ")
+	if err != nil {
+		fmt.Printf("Error: Failed to marshal updated data: %v\n", err)
+		return
+	}
+	err = os.WriteFile("data.json", updatedJSON, 0644)
+	if err != nil {
+		fmt.Printf("Error: Failed to write data.json: %v\n", err)
+		return
+	}
 
 	// 5. Update README.md
 	updateREADME(data.PianoHours)
